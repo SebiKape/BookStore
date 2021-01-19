@@ -1,5 +1,5 @@
 if (process.env.NODE_ENV !== 'production'){
-    require('dotenv').config()
+    require('doten').config()
 }
 
 const express = require('express')
