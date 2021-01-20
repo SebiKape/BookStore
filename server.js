@@ -23,8 +23,8 @@ mongoose.connect(process.env.DATABASE_URL, {
     })
 const db = mongoose.connection
 
-db.on('error', function() {
-    con_suc = "fail";
+db.on('error', function(error) {
+    con_suc = error;
     module.exports.con_suc = con_suc
     console.log(con_suc)
 })
