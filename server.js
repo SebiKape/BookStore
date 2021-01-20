@@ -18,10 +18,11 @@ mongoose.connect(process.env.DATABASE_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
-
+var con_suc = false
 const db = mongoose.connection
-db.on('error', error => console.error(error))
-db.once('open', () => console.log('Connected to Mongoose'))
+db.on('error', error => console.error(error), con_suc = false)
+db.once('open', () => console.log('Connected to Mongoose'), con_suc = true)
+module.exports.con_suc = con_suc
 
 app.use('/', indexRouter)
 
