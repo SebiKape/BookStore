@@ -14,15 +14,25 @@ app.set('layout', 'layouts/layout')
 app.use(expressLayouts)
 app.use(express.static('public'))
 
+var con_suc = ""
 mongoose.connect(process.env.DATABASE_URL, {
     useNewUrlParser: true,
-    useUnifiedTopology: true
-})
-var con_suc = false
+    useUnifiedTopology: true })
+    .catch( function(err)  {
+        console.log(err);
+    })
 const db = mongoose.connection
-db.on('error', error => console.error(error), con_suc = false)
-db.once('open', () => console.log('Connected to Mongoose'), con_suc = true)
-module.exports.con_suc = con_suc
+
+db.on('error', function() {
+    con_suc = "fail";
+    module.exports.con_suc = con_suc
+    console.log(con_suc)
+})
+db.once('open', function(){
+    con_suc = "success";
+    module.exports.con_suc = con_suc
+    console.log(con_suc)
+})
 
 app.use('/', indexRouter)
 
