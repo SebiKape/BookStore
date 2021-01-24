@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const path = require('path')
 
 const coverImageBasePath = 'uploads/bookCovers'
 
@@ -25,12 +26,19 @@ const bookSchema = new mongoose.Schema({
     },
     coverImageName: {
         type: String,
-        required: true
+        required: true,
     },
     author: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,
         ref: 'Author'
+    }
+})
+
+
+bookSchema.virtual('coverImagePath').get(function() {
+    if (this.coverImageName != null) {
+         return path.join('/', coverImageBasePath, this.coverImageName)
     }
 })
 

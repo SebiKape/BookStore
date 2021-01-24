@@ -13,8 +13,8 @@ const mongoose = require('mongoose')
 app.set('view engine', 'ejs')
 app.set('views', './views')
 app.set('layout', 'layouts/layout')
-app.use(expressLayouts)
 app.use(express.static('public'))
+app.use(expressLayouts)
 app.use(express.urlencoded({limit: '10mb', extended: false}))
 
 var con_suc = ""

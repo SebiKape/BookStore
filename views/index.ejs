@@ -1,2 +1,9 @@
 <h1><strong>Welcome to Mybrary!</strong></h1>
 <br>
+<h2>Recently added!</h2>
+<div>
+    <% books.forEach( book => {  %>
+        <%= book.title %>
+            <img height="150" width="100" src="<%= book.coverImagePath %>"> 
+    <% }) %> 
+</div>  
