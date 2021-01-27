@@ -20,6 +20,14 @@
 <br>
 <div>
     <% books.forEach( book => {  %>
-            <img height="150" width="100" src="<%= book.coverImagePath %>"> 
-    <% }) %> 
+        <div>
+            <a href="/books/<%= book.id %>">
+                <img  height="150" width="100" src="<%= book.coverImagePath %>">
+            </a>
+            <div>
+                <a href="/books/<%= book.id %>/edit">Edit</a>
+                <%- include('../partials/_form_delete', { url: `/books/${book.id}` }) %>
+            </div>
+        </div>
+    <% }) %>
 </div>
