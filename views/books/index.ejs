@@ -1,20 +1,21 @@
 <h2 class="page-header">Search book</h2>
 <form action="/books" method="GET">
-    <div>
+    <div class="form-row form-item">
         <label>Title</label>
         <input type = "text" name="title" value="<%= searchOptions.title %>">
     </div>
-    <div>
-        <label>Published After</label>
-        <input type = "date" name="publishedAfter" value="<%= searchOptions.publishedAfter %>">
+    <div class="form-row">
+        <div class="form-item">
+            <label>Published After</label>
+            <input type = "date" name="publishedAfter" value="<%= searchOptions.publishedAfter %>">
+        </div>
+        <div class="form-item">
+            <label>Published Before</label>
+            <input type = "date" name="publishedBefore" value="<%= searchOptions.publishedBefore %>">
+        </div>
     </div>
-    <div>
-        <label>Published Before</label>
-        <input type = "date" name="publishedBefore" value="<%= searchOptions.publishedBefore %>">
-    </div>
-    <br>
-    <div>
-        <button type="submit">Search</button>
+    <div class="form-row-end btn-row">
+        <button class="btn btn-primary" type="submit">Search</button>
     </div>
 </form>
 <br>
@@ -24,10 +25,6 @@
             <a href="/books/<%= book.id %>">
                 <img  height="150" width="100" src="<%= book.coverImagePath %>">
             </a>
-            <div>
-                <a href="/books/<%= book.id %>/edit">Edit</a>
-                <%- include('../partials/_form_delete', { url: `/books/${book.id}` }) %>
-            </div>
         </div>
     <% }) %>
 </div>

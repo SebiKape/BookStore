@@ -15,13 +15,8 @@
     </div>
 </div>
 <br>
-<div>
-    <div>
+<div class="form-row form-row-end btn-row">
         <%- include('../partials/_form_delete', 
         { url: `/books/${book.id}` }) %>
-    </div>
-    <div>
-        <a href="/books/<%= book.id %>/edit">Edit</a>
-    </div>
-    
+        <a class="btn btn-primary" href="/books/<%= book.id %>/edit">Edit</a>
 </div>
