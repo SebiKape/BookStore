@@ -1,10 +1,13 @@
+@import url(https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,400;0,500;1,400;1,500&display=swap);
 @import 'shared/variables.css';
 @import 'shared/header.css';
 @import 'shared/buttons.css';
 @import 'shared/form.css';
+@import 'shared/author.css';
+@import 'shared/books.css';
 
 :root{
-    font-family: 'Gotham Rounded';
+    font-family: 'Rubik';
     font-size: 20px;
     color: var(--color-text-light)
 }
@@ -21,4 +24,8 @@ body {
 
 .inner-container {
     margin: 0 3rem;
+}
+
+.error-message {
+    color: hsl(var(--color-danger-hue),100%,50%)
 }
