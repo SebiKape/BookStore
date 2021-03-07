@@ -62,9 +62,7 @@ router.get('/:id/edit', async (req, res) => {
       author
     })
   } catch (error) {
-    res.redirect('/authors', {
-      errorMessage: "Error loading edit author page"
-    })
+    res.redirect('/authors')
   }
 })
 
@@ -79,7 +77,10 @@ router.put('/:id', async (req, res) => {
     if (author == null){
       res.redirect('/')
     }else{
-      res.render(`authors/${author.id}/edit`, {errorMessage: "Error updating Author"})
+      res.render('authors/edit', {
+        author,  
+        errorMessage: "Error updating Author"
+      })
     }
   }
 })
