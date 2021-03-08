@@ -22,24 +22,20 @@ app.use(methodOverride('_method'))
 app.use(cookieParser())
 
 var con_suc = ""
-mongoose.connect(process.env.DATABASE_URL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true })
-    .catch( function(err)  {
-        console.log(err);
-    })
-const db = mongoose.connection
-
-db.on('error', function(error) {
-    con_suc = error;
-    module.exports.con_suc = con_suc
-    console.log(con_suc)
-})
-db.once('open', function(){
-    con_suc = "Mongodb connected";
-    module.exports.con_suc = con_suc
-    console.log(con_suc)
-})
+async function CreateMdbConnection(){
+    try {
+        await mongoose.connect(process.env.DATABASE_URL, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true })
+        console.log("Mongodb connected")
+          
+    } catch (error) {
+        console.log("Error connecting to db")
+        console.error(error)
+    }
+}
+// const db = mongoose.connection
+CreateMdbConnection()
 
 app.use('/', indexRouter)
 app.use('/authors', authorsRouter)
